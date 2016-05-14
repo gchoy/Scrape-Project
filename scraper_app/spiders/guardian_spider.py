@@ -1,6 +1,5 @@
 from scrapy.spider import BaseSpider
 from scraper_app.items import GuardianNews
-from readability import ParserClient
 
 
 class GuardianSpider(BaseSpider):
@@ -9,13 +8,13 @@ class GuardianSpider(BaseSpider):
    allowed_domains = ['theguardian.com']
    start_urls = ['http://www.theguardian.com/environment/2016/may/11/canada-wildfire-environmental-impacts-fort-mcmurray']
    
-   content_list_xpath='//*[@id="article"]'
-   item_fields = {
-       'articletext' = './/p | .//h2'
-   } 
-   parser_response = parser_client.get_article('http://www.theguardian.com/environment/2016/may/11/canada-wildfire-environmental-impacts-fort-mcmurray')
-   news_items = parser_response.json()
-   item_fields['date'] = news_items['date_published']
-   item_fields['author'] = news_items['author']
-   item_fields['title'] = news_items['title']
-   item_fields['url'] = news_items['url']
+   
+   def parse(self, response):
+        #for sel in response.xpath('//*'):
+        date = response. xpath(".//*[@id='article']/div[2]/div/div[1]/div[2]/p[2]/time[1]").extract()
+        author = response.xpath(".//*[@id='article']/div[2]/div/div[1]/div[2]/p[1]/span/a/span").extract()
+        title = response.xpath(".//*[@id='article']/header/div[1]/div/div/h1").extract()
+        content = response.xpath(".//*[@id='article']/div[2]/div/div[1]/div[3]").extract()
+        url = response.xpath(".//*[@id='article']/html/body/div[6]/article/meta").extract()
+        print date, author,title,url
+
