@@ -1,5 +1,5 @@
 import scrapy
-
+from scraper_app.items import GuardianNews
 
 
 class DmozSpider(scrapy.Spider):
@@ -12,16 +12,17 @@ class DmozSpider(scrapy.Spider):
 
     def parse(self, response):
         """Extracts data from the theguardian website"""
-
+        
+        item = GuardianNews()
         for sel1 in response.xpath(".//*[@id='article']"):
 
-            date = sel1.xpath("////p[2]/time[1]/text()").extract()
-            author = sel1.xpath("////p[1]/span/a/span/text()").extract()
-            title = sel1.xpath("header/div[1]/div/div/h1/text()").extract()
-            content = sel1.xpath('////p/text() | ////h2/text()').extract()
+            item['date'] = sel1.xpath("////p[2]/time[1]/text()").extract()
+            item['author'] = sel1.xpath("////p[1]/span/a/span/text()").extract()
+            item['title'] = sel1.xpath("header/div[1]/div/div/h1/text()").extract()
+            item['content'] = sel1.xpath('////p/text() | ////h2/text()').extract()
 
         for sel2 in response.xpath('//html'):
 
-            url = sel2.xpath(".//link[18]/@href").extract()
-        print date, author,title,content,url
+            item['url'] = sel2.xpath(".//link[18]/@href").extract()
+            yield item
 
