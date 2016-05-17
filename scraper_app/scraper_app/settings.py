@@ -14,8 +14,11 @@ BOT_NAME = 'scraper_app'
 SPIDER_MODULES = ['scraper_app.spiders']
 NEWSPIDER_MODULE = 'scraper_app.spiders'
 
-MONGODB_SERVER = 'localhost'
-MONGODB_PORT = 27017
+#MONGODB_SERVER = 'localhost'
+#MONGODB_PORT = 27017
+
+MONGO_URI = 'mongodb://username:password@composeioserver.com:port/theguardian?ssl=true&ssl_ca_certs=/path/to_pem_key/mypem.pem'
+
 MONGODB_DB = "theguardian"
 MONGODB_COLLECTION = "newsarticles"
 
