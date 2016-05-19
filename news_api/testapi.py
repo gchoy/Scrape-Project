@@ -4,7 +4,7 @@ import bottle
 
 from bson.json_util import dumps
 
-MONGODB_URI = "mongodb://gchoy:p3rr0p3lud0@aws-us-east-1-portal.18.dblayer.com:11425/theguardian?ssl=true&ssl_ca_certs=/home/ubuntu/gchoy.pem"
+MONGODB_URI = "mongodb://username:passwd@compose.io.com:port/theguardian?ssl=true&ssl_ca_certs=/path/to/mypem.pem"
 MONGODB_DB = "theguardian"
 MONGODB_COLLECTION = "newsarticles"
 
