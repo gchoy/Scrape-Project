@@ -7,6 +7,7 @@
 
 #pipelines.py connects with the MonogoDB database in compose.io
 #and inserts the data once it's collected.
+#MONGODB_URI, MONGODB_DB and MONGODB_COLLECTION were defined in the settings file.
 
 import pymongo
 
