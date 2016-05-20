@@ -1,3 +1,8 @@
+#Simple API that runs locally.
+#The API connects to the database in Compose.io and delivers search results 
+#that contain a specific keyword. According to the templates under the views folder.
+
+
 import json
 import pymongo
 import bottle
