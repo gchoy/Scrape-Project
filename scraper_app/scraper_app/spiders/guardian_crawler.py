@@ -30,6 +30,7 @@ class GuardianCrawlerSpider(CrawlSpider):
             item["author"] = map(unicode.strip, sel1.xpath("////p[1]/span/a/span/text()").extract())
             item["title"] = map(unicode.strip, sel1.xpath("header/div[1]/div/div/h1/text()").extract())
             item["content"] = map(unicode.strip, sel1.xpath("////p/text() | ////h2/text()").extract())
-            item["url"] = map(unicode.strip, response.xpath("//html").xpath(".//link[18]/@href").extract())
+            item["url"] = map(unicode.strip, response.xpath("/html/head/link[26]/@href").extract())
 
+            
             yield item
