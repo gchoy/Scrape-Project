@@ -13,7 +13,8 @@ When running, these spiders are aided by:
 
 
 The results are available through the testapi.py file ,which is in the news_api folder. This API runs in the command line
-by running: ```python testapi.py``` . And is searchable by keyword, if the keyword matches the title, the content, or author, a record will be included in the results.
+by running: ```python testapi.py``` . And is searchable by keyword, if the keyword matches the title, the content, or author, a record will be included in the results. A short video of the API in use can be seen here: [youtube] (https://www.youtube.com/watch?v=93mL9nE66tc )
+
 
 It is not necessary to run the spiders before the API, as there is some data already available in the database.
 However, before running the API the following modules must be installed:
@@ -21,7 +22,6 @@ However, before running the API the following modules must be installed:
 - ```sudo pip install pymongo```
 - ```sudo pip install bottle```
 
-If the spiders are to be run, then the scrapy module must be installed and a new scrapy project must be created following the instructions in the scrapy docs, as the spiders can only be run within a scrapy project.
 
 Then place the spider, the crawler, the settings and the pipelines and items files in the corresponding folders in the project tree. 
 To run the spider or the crawler go to the first scraper_app folder (the folder before the one that has the helper files) and enter in the command line:
